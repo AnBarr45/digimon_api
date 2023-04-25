@@ -14,6 +14,7 @@ function addDigimon(data, idx) {
                   ${data.name} 
               
                   </a>
+                <img src"${data.img}">
                   
             </td>
         </tr> 

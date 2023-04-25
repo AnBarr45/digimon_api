@@ -1,4 +1,4 @@
-function addDigimon(data, idx) {
+function addDigimon(json, idx) {
 
   const html = `
         <tr>
@@ -11,11 +11,15 @@ function addDigimon(data, idx) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   >
-                  ${data.name} 
-              
+                  ${json.name} 
                   </a>
-                <img src"${data.img}">
-                  
+            </td>
+            <td scope="col-6">
+            
+                <img class="img-thumbnail  " src="${json.img}" id="digimon-img" >
+                        
+            </td>
+                        
             </td>
         </tr> 
         <div id="hidden_stats">
@@ -34,11 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(data)
 
       let nameArray = []
-      for (i in data) {
-        nameArray.push(data[i].name.toUpperCase())
-      }
-      nameArray.sort()
-
       console.log(nameArray)
       // Get currency from user input and convert to upper case
       const tableBody = document.querySelector("#tbody")

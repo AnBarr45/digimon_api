@@ -50,3 +50,7 @@ td {
 td {
   font-size: 30px;
 }
+
+#digimon-img {
+  max-width: 100px;
+}

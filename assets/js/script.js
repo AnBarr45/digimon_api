@@ -1,30 +1,22 @@
 function addDigimon(json, idx) {
 
   const html = `
-        <tr>
+        <tr class="container">
             <th scope="col-1">N°${idx + 1}</th>
-            <td scope="col">
-                <a
-                  class="btn dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  >
+            <td scope="col" >
                   ${json.name} 
-                  </a>
             </td>
-            <td scope="col-6">
-            
+
+            <td scope="col">
+              ${json.level}
+            </td>
+            <td scope="col">
                 <img class="img-thumbnail  " src="${json.img}" id="digimon-img" >
-                        
             </td>
                         
-            </td>
+          
         </tr> 
-        <div id="hidden_stats">
     
-        </div>
           `
   return html
 

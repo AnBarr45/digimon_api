@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Digimon List</title>
+  </head>
+  <body>
+    <main class="container" id="main">
+      <!--------------------NAVBAR------------------------------>
+      <nav
+        class="navbar navbar-expand-xl mb-5 mt-2 rounded"
+        style="border-style: outset"
+        id="navbarr"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img
+              src="./assets/img/digimon_logo_vector_by_3prsta-d9a4yb9-679245380.png"
+              alt="DIGIMON"
+              style="width: 100px"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+
+              <!------------------------DROPDOWN-------------------------->
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!--------------------LOGO------------------------------>
+      <div class="logo shadow container p-4">
+        <img
+          src="./assets/img/digimon_logo_1.png"
+          class="img-fluid"
+          alt="logo"
+        />
+      </div>
+
+      <!--------------------Bienvenido------------------------------>
+      <div
+        class="container row-cols-1 text-center pb-5 pt-5"
+        id="title"
+        id="bienvenido"
+      >
+        <h1 id="bienvenida">Bienvenido a Digimon List</h1>
+      </div>
+
+      <!--------------------Digimon_info------------------------------>
+      <div id="digimon_info"></div>
+
+      <!--------------------LISTA------------------------------>
+      <div id="lista" class="d-grid mt-15 shadow-lg rounded-2 px-2 pt-5">
+        <div class="container d-grid align-content-sm-start row">
+          <!--------------------SearchBar------------------------------>
+          <form class="container pb-3" role="search">
+            <input
+              class="form-control-sm align-content-start"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="searchbar"
+            />
+            <button class="btn btn-outline-dark" type="submit" id="searchbtn">
+              Search
+            </button>
+          </form>
+          <!--------------------Pagination----------------------------->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1-10</a></li>
+              <li class="page-item"><a class="page-link" href="#">11-20</a></li>
+              <li class="page-item"><a class="page-link" href="#">21-30</a></li>
+              <li class="page-item"><a class="page-link" href="#">31-40</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!--------------------TABLE------------------------------>
+        <table
+          class="table rounded table-sm table-bordered table-light"
+          id="table1"
+        >
+          <thead class="table">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Digimon</th>
+            </tr>
+          </thead>
+          <tbody class="table" id="tbody"></tbody>
+        </table>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

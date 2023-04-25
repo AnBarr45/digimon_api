@@ -1,0 +1,52 @@
+body {
+  background: linear-gradient(#5ffc2f, #2f5ffc, #cc2ffc);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#bienvenida {
+  font-family: fantasy;
+}
+#navbarr {
+  background: linear-gradient(90deg, silver, #484f59) !important;
+}
+.pagination > li > a {
+  color: black;
+  background: linear-gradient(160deg, silver, #484f59) !important;
+}
+thead > tr > th {
+  background: linear-gradient(0deg, silver, #484f59) !important;
+}
+
+tbody > tr > th,
+td {
+  background: linear-gradient(180deg, white, silver) !important;
+}
+
+#lista {
+  background-color: linear-gradient(#9e8122, #fccc2f);
+  border-style: groove;
+  border-width: 4px;
+}
+.logo {
+  background: linear-gradient(90deg, silver, grey);
+  min-width: 200px;
+  max-width: 450px;
+  border-radius: 100%;
+  border-style: outset;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+#main {
+  background: linear-gradient(90deg, #fccc2f, #9e8122);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  border-style: outset;
+  border-color: silver;
+}
+td {
+  font-size: 30px;
+}

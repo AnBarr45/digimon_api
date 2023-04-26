@@ -1,17 +1,22 @@
-function addDigimon(json: JSON, idx: number): string {
+function addDigimon(json: string, idx: number): string {
+  let obj = JSON.parse(json);
+
+  const nombre = obj.name;
+  const lvl = obj.level;
+  const imagen = obj.img;
 
   const html = `
         <tr class="container">
-            <th scope="col-1">N°${idx + 1}</th>
+            <th scope="col-1">N°${idx}</th>
             <td scope="col" >
-                  ${json.name} 
+                  ${nombre} 
             </td>
 
             <td scope="col">
-              ${json.level}
+              ${lvl}
             </td>
             <td scope="col">
-                <img class="img-thumbnail  " src="${json.img}" id="digimon-img" >
+                <img class="img-thumbnail  " src="${imagen}" id="digimon-img" >
             </td>
                         
           
@@ -25,19 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Put response into json form
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      const nameMap = new Map();
 
+      console.log(data)
+
+      const nameMap = new Map();
       const tableBody = document.querySelector("#tbody")
 
 
-      for (let i = 0; i < 10; i++) { // añade las tablas y los nombres al map
-        tableBody!.innerHTML += addDigimon(data[i], i)
+      for (let i = 0; i <= 9; i++) { // añade las tablas y los nombres al map
+        tableBody!.innerHTML += addDigimon(data[i], i + 1)
         nameMap.set(i, data[i].name.toUpperCase())
       }
 
-
-      document.querySelector("searchbtn").onsubmit(function () {
+      document.querySelector("searchbtn")!.addEventListener("submit", function () {
         const search = document.querySelector('#seachbar')!;
         console.log(search)
         if (nameMap.get(search)) {

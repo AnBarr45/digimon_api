@@ -1,4 +1,4 @@
-function addDigimon(json: string, idx: number): string {
+function addDigimonTable(json: string, idx: number): string {
   let obj = JSON.parse(json);
 
   const nombre = obj.name;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
       for (let i = 0; i <= 9; i++) { // añade las tablas al doc y añade los nombres al map
-        tableBody!.innerHTML += addDigimon(data[i], i + 1)
+        tableBody!.innerHTML += addDigimonTable(data[i], i + 1)
         nameMap.set(i, data[i].name.toUpperCase())
       }
 

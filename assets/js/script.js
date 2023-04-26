@@ -28,28 +28,22 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      const nameMap = new Map();
 
-      let nameArray = []
-      console.log(nameArray)
-      // Get currency from user input and convert to upper case
       const tableBody = document.querySelector("#tbody")
+      
 
-      let page = 1;
       for (i = 0; i < 10; i++) {
         tableBody.innerHTML += addDigimon(data[i], i)
+        nameArray.set(i,data[i].name.toUpperCase())
       }
-
-
 
 
       document.querySelector("searchbtn").onsubmit() = function () {
         const search = document.querySelector('#seachbar').value.toUpperCase();
+        if (nameMap.get(search)){
 
-
-
-
-
-
+        }
 
       }
     })

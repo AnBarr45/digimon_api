@@ -33,16 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
       const tableBody = document.querySelector("#tbody")
       
 
-      for (i = 0; i < 10; i++) {
-        tableBody.innerHTML += addDigimon(data[i], i)
-        nameArray.set(i,data[i].name.toUpperCase())
+      for (i = 0; i < 10; i++) { // añade las tablas y los nombres al map
+        tableBody.innerHTML += addDigimon(data[i], i) 
+        nameMap.set(i,data[i].name.toUpperCase())
       }
 
 
       document.querySelector("searchbtn").onsubmit() = function () {
         const search = document.querySelector('#seachbar').value.toUpperCase();
         if (nameMap.get(search)){
-
+          //todo: encontrar cómo sacar elementos del tbody
         }
 
       }

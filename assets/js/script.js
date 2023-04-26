@@ -1,5 +1,9 @@
 function addDigimon(json, idx) {
-    var html = "\n        <tr class=\"container\">\n            <th scope=\"col-1\">N\u00B0".concat(idx + 1, "</th>\n            <td scope=\"col\" >\n                  ").concat(json.name, " \n            </td>\n\n            <td scope=\"col\">\n              ").concat(json.level, "\n            </td>\n            <td scope=\"col\">\n                <img class=\"img-thumbnail  \" src=\"").concat(json.img, "\" id=\"digimon-img\" >\n            </td>\n                        \n          \n        </tr>");
+    var obj = JSON.parse(json);
+    var nombre = obj.name;
+    var lvl = obj.level;
+    var imagen = obj.img;
+    var html = "\n        <tr class=\"container\">\n            <th scope=\"col-1\">N\u00B0".concat(idx, "</th>\n            <td scope=\"col\" >\n                  ").concat(nombre, " \n            </td>\n\n            <td scope=\"col\">\n              ").concat(lvl, "\n            </td>\n\n            <td scope=\"col\">\n                <img class=\"img-thumbnail  \" src=\"").concat(imagen, "\" id=\"digimon-img\" >\n            </td>\n        </tr>");
     return html;
 }
 document.addEventListener('DOMContentLoaded', function () {
@@ -10,12 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(data);
         var nameMap = new Map();
         var tableBody = document.querySelector("#tbody");
-        for (var i = 0; i < 10; i++) { // añade las tablas y los nombres al map
-            tableBody.innerHTML += addDigimon(data[i], i);
+        for (var i = 0; i <= 9; i++) { // añade las tablas al doc y añade los nombres al map
+            tableBody.innerHTML += addDigimon(data[i], i + 1);
             nameMap.set(i, data[i].name.toUpperCase());
         }
-        document.querySelector("searchbtn").onsubmit(function () {
-            var search = document.querySelector('#seachbar').value.toUpperCase();
+        document.querySelector("searchbtn").addEventListener("submit", function () {
+            var search = document.querySelector('#seachbar');
+            console.log(search);
             if (nameMap.get(search)) {
                 //todo: encontrar cómo sacar elementos del tbody
             }

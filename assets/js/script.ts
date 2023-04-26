@@ -15,11 +15,10 @@ function addDigimon(json: string, idx: number): string {
             <td scope="col">
               ${lvl}
             </td>
+
             <td scope="col">
                 <img class="img-thumbnail  " src="${imagen}" id="digimon-img" >
             </td>
-                        
-          
         </tr>`
   return html
 
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const tableBody = document.querySelector("#tbody")
 
 
-      for (let i = 0; i <= 9; i++) { // añade las tablas y los nombres al map
+      for (let i = 0; i <= 9; i++) { // añade las tablas al doc y añade los nombres al map
         tableBody!.innerHTML += addDigimon(data[i], i + 1)
         nameMap.set(i, data[i].name.toUpperCase())
       }

@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const TABLEBODY = document.querySelector("#tbody")
 
 
-      for (let i = 0; i <= 9; i++) { // añade las tablas al doc y añade los nombres al map
+
+
+      for (let i = 0; i <= 7; i++) { // añade las tablas al doc y añade los nombres al map
         TABLEBODY!.innerHTML += addDigimonTable(data[i], i + 1)
         NAMEMAP.set(i, data[i].name.toUpperCase())
       }

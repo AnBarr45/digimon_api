@@ -1,13 +1,13 @@
-@import "/assets/css/DigimonBasic.woff";
-
 body {
   background: linear-gradient(#5ffc2f, #2f5ffc, #cc2ffc);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
-
+footer {
+  display: inline;
+}
 #bienvenida {
   font-family: url();
 }
@@ -33,7 +33,6 @@ thead > tr > th {
 
 tbody > tr > th,
 td {
-  font-family: Georgia, "Times New Roman", Times, serif;
   background: linear-gradient(180deg, white, silver) !important;
   vertical-align: baseline;
   text-align: center;

@@ -1,9 +1,9 @@
 function addDigimonTable(json, idx) {
-    var obj = JSON.parse(json);
-    var NOMBRE = obj.name;
-    var LVL = obj.level;
-    var IMAGEN = obj.img;
-    var html = "\n        <tr class=\"container\">\n            <th scope=\"col-1\">N\u00B0".concat(idx, "</th>\n            <td scope=\"col\" >\n                  ").concat(NOMBRE, " \n            </td>\n\n            <td scope=\"col\">\n              ").concat(LVL, "\n            </td>\n\n            <td scope=\"col\">\n                <img class=\"img-thumbnail  \" src=\"").concat(IMAGEN, "\" id=\"digimon-img\" >\n            </td>\n        </tr>");
+    //let obj = JSON.parse(json);
+    var NOMBRE = json.name;
+    var LVL = json.level;
+    var IMAGEN = json.img;
+    var html = "\n        <tr class=\"container\">\n            <th scope=\"col-1\">N\u00B0".concat(idx, "</th>\n            <td scope=\"col\" >\n                  ").concat(NOMBRE, " \n            </td>\n            <td scope=\"col\">\n              ").concat(LVL, "\n            </td>\n            <td scope=\"col\">\n                <img class=\"img-thumbnail  \" src=\"").concat(IMAGEN, "\" id=\"digimon-img\" >\n            </td>\n        </tr>\n        ");
     return html;
 }
 document.addEventListener('DOMContentLoaded', function () {

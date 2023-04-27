@@ -1,25 +1,25 @@
-function addDigimonTable(json: string, idx: number): string {
-  let obj = JSON.parse(json);
+function addDigimonTable(json: any, idx: number): string {
+  //let obj = JSON.parse(json);
 
-  const NOMBRE = obj.name;
-  const LVL = obj.level;
-  const IMAGEN = obj.img;
+  const NOMBRE = json.name;
+  const LVL = json.level;
+  const IMAGEN = json.img;
 
-  const html = `
+  const html =
+    `
         <tr class="container">
             <th scope="col-1">N°${idx}</th>
             <td scope="col" >
                   ${NOMBRE} 
             </td>
-
             <td scope="col">
               ${LVL}
             </td>
-
             <td scope="col">
                 <img class="img-thumbnail  " src="${IMAGEN}" id="digimon-img" >
             </td>
-        </tr>`
+        </tr>
+        `
   return html
 
 }

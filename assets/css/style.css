@@ -38,7 +38,13 @@ td {
   vertical-align: baseline;
   text-align: center;
 }
-
+.img-thumbnail:hover {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
 #lista {
   background-color: linear-gradient(#9e8122, #fccc2f);
   border-style: groove;

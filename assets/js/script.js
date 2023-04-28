@@ -9,7 +9,7 @@ function tableupdate(table, movbtn, data, p) {
     var _a;
     for (var e = 0; e < 8; e++) { // añade las tablas al doc 
         var i = e + (8 * p);
-        if (p >= 26 || p <= 0) {
+        if (p >= 26 || p < 0) {
             break;
         } // termina el loop para que no pase de la primera ni la última página
         if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque

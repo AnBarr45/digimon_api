@@ -1,13 +1,11 @@
-function addDigimonTable(json: any, idx: number): string {
-  //let obj = JSON.parse(json);
-
+function addDigimonData(json: any, idx: number): string {
   const NOMBRE = json.name;
   const LVL = json.level;
   const IMAGEN = json.img;
 
   const html =
     `
-        <tr class="container">
+        <tr class="container" id="lista-digimon">
             <th scope="col-1">N°${idx}</th>
             <td scope="col" >
                   ${NOMBRE} 
@@ -24,38 +22,61 @@ function addDigimonTable(json: any, idx: number): string {
 
 }
 
+
+function tableupdate(table: Element, movbtn: Element | null, data: JSON[], p: number) {
+  for (let e = 0; e < 8; e++) { // añade las tablas al doc 
+    let i = e + (8 * p);
+    if (p >= 26 || p <= 0) { break } // termina el loop para que no pase de la primera ni la última página
+    if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque
+      table.innerHTML += addDigimonData(data[i], i++);
+    }
+    else if (movbtn !== null) { // remueve y re añade digimons después de iniciar
+      document.querySelector("#lista-digimon")?.remove()
+      table.innerHTML += addDigimonData(data[i], i++);
+    }
+  };
+
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   fetch('https://digimon-api.vercel.app/api/digimon')
-    // Put response into json form
+
     .then(response => response.json())
     .then(data => {
 
-      console.log(data)
 
       const NAMEMAP = new Map();
-      const TABLEBODY = document.querySelector("#tbody")
+      const searchbutton = document.querySelector("#searchbtn");
+      const previous = document.querySelector("#prev")
+      const next = document.querySelector("#nxt")
+      const TABLEBODY = document.querySelector("#tbody");
 
 
+      let pcount = 0;
+      tableupdate(TABLEBODY!, null, data, pcount)
+      pcount++;
+
+      next?.addEventListener("click", function () { tableupdate(TABLEBODY!, next, data, pcount); pcount = pcount > 0 ? pcount + 1 : pcount })
+      previous?.addEventListener("click", function () { tableupdate(TABLEBODY!, previous, data, pcount); pcount = pcount < 26 ? pcount - 1 : pcount })
 
 
-      for (let i = 0; i <= 7; i++) { // añade las tablas al doc y añade los nombres al map
-        TABLEBODY!.innerHTML += addDigimonTable(data[i], i + 1)
-        NAMEMAP.set(i, data[i].name.toUpperCase())
-      }
+      //NAMEMAP.set(i, data[i].name.toUpperCase());
 
-      document.querySelector("searchbtn")!.addEventListener("submit", function () {
+      searchbutton?.addEventListener("submit", function () {
         const SEARCH = document.querySelector('#seachbar')!;
-        console.log(SEARCH)
+        console.log(SEARCH);
         if (NAMEMAP.get(SEARCH)) {
-          //todo: encontrar cómo sacar elementos del tbody
-        }
+          TABLEBODY!.remove()
 
-      })
+        };
+
+      });
     })
     .catch(error => {
       console.log('Error:', error);
     });
-  // Prevent default submission
   return false;
 
 

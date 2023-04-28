@@ -12,7 +12,7 @@ function tableupdate(table, movbtn, data, p) {
         if (p >= 26 || p < 0) {
             break;
         } // termina el loop para que no pase de la primera ni la última página
-        if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque
+        else if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque
             table.innerHTML += addDigimonData(data[i], i++);
         }
         else if (movbtn !== null) { // remueve y re añade digimons después de iniciar

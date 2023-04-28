@@ -13,11 +13,11 @@ function tableupdate(table, movbtn, data, p) {
             break;
         } // termina el loop para que no pase de la primera ni la última página
         else if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque
-            table.innerHTML += addDigimonData(data[i], i++);
+            table.innerHTML += addDigimonData(data[i], i + 1);
         }
-        else if (movbtn !== null) { // remueve y re añade digimons después de iniciar
+        else { // remueve y re añade digimons después de iniciar
             (_a = document.querySelector("#lista-digimon")) === null || _a === void 0 ? void 0 : _a.remove();
-            table.innerHTML += addDigimonData(data[i], i++);
+            table.innerHTML += addDigimonData(data[i], i + 1);
         }
     }
     ;
@@ -33,9 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var TABLEBODY = document.querySelector("#tbody");
         var pcount = 0;
         tableupdate(TABLEBODY, null, data, pcount);
-        pcount++;
-        next === null || next === void 0 ? void 0 : next.addEventListener("click", function () { tableupdate(TABLEBODY, next, data, pcount); pcount = pcount > 0 ? pcount + 1 : pcount; });
-        previous === null || previous === void 0 ? void 0 : previous.addEventListener("click", function () { tableupdate(TABLEBODY, previous, data, pcount); pcount = pcount < 26 ? pcount - 1 : pcount; });
+        next === null || next === void 0 ? void 0 : next.addEventListener("click", function () { pcount = pcount >= 0 ? pcount + 1 : pcount; tableupdate(TABLEBODY, next, data, pcount); });
+        previous === null || previous === void 0 ? void 0 : previous.addEventListener("click", function () { pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount; tableupdate(TABLEBODY, previous, data, pcount); });
         //NAMEMAP.set(i, data[i].name.toUpperCase());
         searchbutton === null || searchbutton === void 0 ? void 0 : searchbutton.addEventListener("submit", function () {
             var SEARCH = document.querySelector('#seachbar');

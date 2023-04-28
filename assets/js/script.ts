@@ -28,11 +28,11 @@ function tableupdate(table: Element, movbtn: Element | null, data: JSON[], p: nu
     let i = e + (8 * p);
     if (p >= 26 || p < 0) { break } // termina el loop para que no pase de la primera ni la última página
     else if (movbtn === null) { // como se ejecuta al principio, necesito que simplemente añada a la tabla, no que saque
-      table.innerHTML += addDigimonData(data[i], i++);
+      table.innerHTML += addDigimonData(data[i], i + 1);
     }
-    else if (movbtn !== null) { // remueve y re añade digimons después de iniciar
+    else { // remueve y re añade digimons después de iniciar
       document.querySelector("#lista-digimon")?.remove()
-      table.innerHTML += addDigimonData(data[i], i++);
+      table.innerHTML += addDigimonData(data[i], i + 1);
     }
   };
 
@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let pcount = 0;
       tableupdate(TABLEBODY!, null, data, pcount)
-      pcount++;
 
-      next?.addEventListener("click", function () { tableupdate(TABLEBODY!, next, data, pcount); pcount = pcount > 0 ? pcount + 1 : pcount })
-      previous?.addEventListener("click", function () { tableupdate(TABLEBODY!, previous, data, pcount); pcount = pcount < 26 ? pcount - 1 : pcount })
+
+      next?.addEventListener("click", function () { pcount = pcount >= 0 ? pcount + 1 : pcount; tableupdate(TABLEBODY!, next, data, pcount) })
+      previous?.addEventListener("click", function () { pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount; tableupdate(TABLEBODY!, previous, data, pcount) })
 
 
       //NAMEMAP.set(i, data[i].name.toUpperCase());

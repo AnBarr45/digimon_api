@@ -22,27 +22,42 @@ function tableupdate(table, movbtn, data, p) {
     }
     ;
 }
+function digimonSearch(el, table, data) {
+    var _a;
+    var elemt = document.getElementById(el);
+    var dmon = elemt.value.toUpperCase();
+    if (elemt === null) {
+        alert("the form is empty");
+    }
+    for (var i = 0; i < 8; i++) {
+        if (data[i].name.toUpperCase() == dmon) {
+            (_a = document.querySelector("#lista-digimon")) === null || _a === void 0 ? void 0 : _a.remove();
+            table.innerHTML += addDigimonData(data[i], i + 1);
+        }
+    }
+}
+// CARGA LA PAGINA Y EJECUTA TODO DENTRO
 document.addEventListener('DOMContentLoaded', function () {
     fetch('https://digimon-api.vercel.app/api/digimon')
         .then(function (response) { return response.json(); })
         .then(function (data) {
-        var NAMEMAP = new Map();
         var searchbutton = document.querySelector("#searchbtn");
         var previous = document.querySelector("#prev");
         var next = document.querySelector("#nxt");
         var TABLEBODY = document.querySelector("#tbody");
         var pcount = 0;
         tableupdate(TABLEBODY, null, data, pcount);
-        next === null || next === void 0 ? void 0 : next.addEventListener("click", function () { pcount = pcount >= 0 ? pcount + 1 : pcount; tableupdate(TABLEBODY, next, data, pcount); });
-        previous === null || previous === void 0 ? void 0 : previous.addEventListener("click", function () { pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount; tableupdate(TABLEBODY, previous, data, pcount); });
-        //NAMEMAP.set(i, data[i].name.toUpperCase());
-        searchbutton === null || searchbutton === void 0 ? void 0 : searchbutton.addEventListener("submit", function () {
-            var SEARCH = document.querySelector('#seachbar');
-            console.log(SEARCH);
-            if (NAMEMAP.get(SEARCH)) {
-                TABLEBODY.remove();
-            }
-            ;
+        next === null || next === void 0 ? void 0 : next.addEventListener("click", function () {
+            pcount = pcount >= 0 ? pcount + 1 : pcount;
+            tableupdate(TABLEBODY, next, data, pcount);
+        });
+        previous === null || previous === void 0 ? void 0 : previous.addEventListener("click", function () {
+            pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount;
+            tableupdate(TABLEBODY, previous, data, pcount);
+        });
+        searchbutton === null || searchbutton === void 0 ? void 0 : searchbutton.addEventListener("click", function (e) {
+            e.preventDefault();
+            digimonSearch("#searchbar", TABLEBODY, data);
         });
     })
         .catch(function (error) {

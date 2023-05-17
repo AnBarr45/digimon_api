@@ -21,8 +21,6 @@ function addDigimonData(json: any, idx: number): string {
   return html
 
 }
-
-
 function tableupdate(table: Element, movbtn: Element | null, data: JSON[], p: number) {
   for (let e = 0; e < 8; e++) { // añade las tablas al doc 
     let i = e + (8 * p);
@@ -35,19 +33,33 @@ function tableupdate(table: Element, movbtn: Element | null, data: JSON[], p: nu
       table.innerHTML += addDigimonData(data[i], i + 1);
     }
   };
+}
+function digimonSearch(el: string, table: Element, data: any) {
+  let elemt = (<HTMLInputElement>document.getElementById(el))
+  let dmon = elemt.value.toUpperCase()
+  if (elemt === null) {
+    alert("the form is empty")
+  }
+  for (var i = 0; i < 8; i++) {
+    if (data[i].name.toUpperCase() == dmon) {
+      document.querySelector("#lista-digimon")?.remove()
+      table.innerHTML += addDigimonData(data[i], i + 1);
+    }
+  }
+
 
 }
 
 
 
+
+// CARGA LA PAGINA Y EJECUTA TODO DENTRO
 document.addEventListener('DOMContentLoaded', function () {
   fetch('https://digimon-api.vercel.app/api/digimon')
-
     .then(response => response.json())
     .then(data => {
 
 
-      const NAMEMAP = new Map();
       const searchbutton = document.querySelector("#searchbtn");
       const previous = document.querySelector("#prev")
       const next = document.querySelector("#nxt")
@@ -58,21 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
       tableupdate(TABLEBODY!, null, data, pcount)
 
 
-      next?.addEventListener("click", function () { pcount = pcount >= 0 ? pcount + 1 : pcount; tableupdate(TABLEBODY!, next, data, pcount) })
-      previous?.addEventListener("click", function () { pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount; tableupdate(TABLEBODY!, previous, data, pcount) })
-
-
-      //NAMEMAP.set(i, data[i].name.toUpperCase());
-
-      searchbutton?.addEventListener("submit", function () {
-        const SEARCH = document.querySelector('#seachbar')!;
-        console.log(SEARCH);
-        if (NAMEMAP.get(SEARCH)) {
-          TABLEBODY!.remove()
-
-        };
-
-      });
+      next?.addEventListener("click", function () {
+        pcount = pcount >= 0 ? pcount + 1 : pcount; tableupdate(TABLEBODY!, next, data, pcount)
+      })
+      previous?.addEventListener("click", function () {
+        pcount = pcount < 26 && pcount != 0 ? pcount - 1 : pcount; tableupdate(TABLEBODY!, previous, data, pcount)
+      })
+      searchbutton?.addEventListener("click", function (e) {
+        e.preventDefault()
+        digimonSearch("#searchbar", TABLEBODY!, data)
+      })
     })
     .catch(error => {
       console.log('Error:', error);

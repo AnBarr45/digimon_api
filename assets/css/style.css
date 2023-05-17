@@ -5,9 +5,6 @@ body {
   background-attachment: fixed;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
-footer {
-  display: inline;
-}
 #bienvenida {
   font-family: url();
 }
@@ -76,4 +73,8 @@ td {
 #digimon-img {
   max-width: 130px;
   min-width: 20px;
+}
+footer {
+  display: flex;
+  justify-content: center;
 }
